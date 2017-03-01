@@ -14,7 +14,7 @@ namespace ribi {
 
 class QtHistogramEqualizationerMenuDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
+  Q_OBJECT //!OCLINT
 
 public:
   explicit QtHistogramEqualizationerMenuDialog(QWidget *parent = 0);
