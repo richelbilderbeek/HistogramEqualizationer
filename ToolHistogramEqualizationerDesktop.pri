@@ -1,13 +1,13 @@
-include(../../Tools/ToolHistogramEqualizationer/ToolHistogramEqualizationerConsole.pri)
+include(ToolHistogramEqualizationerConsole.pri)
 
 SOURCES += \
-    ../../Tools/ToolHistogramEqualizationer/qthistogramequalizationermaindialog.cpp \
-    ../../Tools/ToolHistogramEqualizationer/qthistogramequalizationermenudialog.cpp
+    $$PWD/qthistogramequalizationermaindialog.cpp \
+    $$PWD/qthistogramequalizationermenudialog.cpp
 
 HEADERS += \
-    ../../Tools/ToolHistogramEqualizationer/qthistogramequalizationermaindialog.h \
-    ../../Tools/ToolHistogramEqualizationer/qthistogramequalizationermenudialog.h
+    $$PWD/qthistogramequalizationermaindialog.h \
+    $$PWD/qthistogramequalizationermenudialog.h
 
 FORMS += \
-    ../../Tools/ToolHistogramEqualizationer/qthistogramequalizationermenudialog.ui \
-    ../../Tools/ToolHistogramEqualizationer/qthistogramequalizationermaindialog.ui
+    $$PWD/qthistogramequalizationermenudialog.ui \
+    $$PWD/qthistogramequalizationermaindialog.ui

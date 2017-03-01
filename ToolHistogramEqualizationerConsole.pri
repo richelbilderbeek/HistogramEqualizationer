@@ -1,13 +1,12 @@
-INCLUDEPATH += \
-    ../../Tools/ToolHistogramEqualizationer
+INCLUDEPATH += $$PWD
 
 HEADERS += \
-    ../../Tools/ToolHistogramEqualizationer/histogramequalizationermaindialog.h \
-    ../../Tools/ToolHistogramEqualizationer/histogramequalizationermenudialog.h
+    $$PWD/histogramequalizationermaindialog.h \
+    $$PWD/histogramequalizationermenudialog.h
 
 SOURCES += \
-    ../../Tools/ToolHistogramEqualizationer/histogramequalizationermaindialog.cpp \
-    ../../Tools/ToolHistogramEqualizationer/histogramequalizationermenudialog.cpp
+    $$PWD/histogramequalizationermaindialog.cpp \
+    $$PWD/histogramequalizationermenudialog.cpp
 
 RESOURCES += \
-    ../../Tools/ToolHistogramEqualizationer/ToolHistogramEqualizationer.qrc
+    $$PWD/ToolHistogramEqualizationer.qrc
