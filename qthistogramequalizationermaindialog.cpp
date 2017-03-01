@@ -9,8 +9,6 @@
 #include <QLabel>
 
 #include "histogramequalizationermaindialog.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "ui_qthistogramequalizationermaindialog.h"
 #pragma GCC diagnostic pop
 
@@ -19,9 +17,6 @@ ribi::QtHistogramEqualizationerMainDialog::QtHistogramEqualizationerMainDialog(Q
     ui(new Ui::QtHistogramEqualizationerMainDialog),
     m_target(nullptr)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
 }
 
@@ -78,29 +73,3 @@ void ribi::QtHistogramEqualizationerMainDialog::on_button_save_clicked()
 
   m_target->pixmap()->save(filename.c_str());
 }
-
-#ifndef NDEBUG
-void ribi::QtHistogramEqualizationerMainDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  const QImage source(":/histogramequalizationer/images/ToolHistogramEqualizationerTest.png");
-  assert(!source.isNull());
-  const QImage target {
-
-    HistogramEqualizationerMainDialog::DoHistogramEqualization(source)
-  };
-  assert(!target.isNull());
-  assert(target != source);
-  const QImage target_again {
-    HistogramEqualizationerMainDialog::DoHistogramEqualization(source)
-  };
-  assert(!target_again.isNull());
-  assert(target == target_again
-    && "A second histogram equalization will result in the original");
-}
-#endif

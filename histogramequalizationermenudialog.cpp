@@ -11,16 +11,10 @@
 #include "fileio.h"
 #include "imagecanvas.h"
 #include "histogramequalizationermaindialog.h"
-#include "richelbilderbeekprogram.h"
-#include "testtimer.h"
-#include "trace.h"
 #pragma GCC diagnostic pop
 
 int ribi::HistogramEqualizationerMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   const int argc = static_cast<int>(argv.size());
   if (argc != 3 || (argv[1] != "-f" && argv[1] != "--filename"))
   {
@@ -67,8 +61,6 @@ ribi::About ribi::HistogramEqualizationerMenuDialog::GetAbout() const noexcept
   );
   a.AddLibrary("Canvas version: " + Canvas::GetVersion());
   a.AddLibrary("ImageCanvas version: " + ImageCanvas::GetVersion());
-  a.AddLibrary("TestTimer version: " + TestTimer::GetVersion());
-  a.AddLibrary("Trace version: " + Trace::GetVersion());
   return a;
 }
 
@@ -87,15 +79,6 @@ ribi::Help ribi::HistogramEqualizationerMenuDialog::GetHelp() const noexcept
   );
 }
 
-boost::shared_ptr<const ribi::Program> ribi::HistogramEqualizationerMenuDialog::GetProgram() const noexcept
-{
-  boost::shared_ptr<const ribi::Program> p {
-    new ribi::ProgramHistogramEqualizationer
-  };
-  assert(p);
-  return p;
-}
-
 std::string ribi::HistogramEqualizationerMenuDialog::GetVersion() const noexcept
 {
   return "2.1";
@@ -109,25 +92,3 @@ std::vector<std::string> ribi::HistogramEqualizationerMenuDialog::GetVersionHist
     "2014-02-06: version 2.1: added command-line version"
   };
 }
-
-#ifndef NDEBUG
-void ribi::HistogramEqualizationerMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    fileio::FileIo();
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-
-  HistogramEqualizationerMenuDialog d;
-  const std::string filename { fileio::FileIo().GetTempFileName(".png") };
-  QFile file(":/histogramequalizationer/images/ToolHistogramEqualizationerMenu.png");
-  file.copy(filename.c_str());
-  d.Execute( { "HistogramEqualizationerMenuDialog", "-f", filename } );
-  fileio::FileIo().DeleteFile(filename);
-}
-#endif
