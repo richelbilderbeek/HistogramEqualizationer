@@ -9,7 +9,7 @@
 
 #pragma GCC diagnostic pop
 
-QImage ribi::HistogramEqualizationerMainDialog::DoHistogramEqualization(const QImage& source) noexcept
+QImage ribi::HistogramEqualizationerMainDialog::DoHistogramEqualization(const QImage& source) noexcept //!OCLINT not today
 {
   QImage image(source);
   const int width  = image.width();
