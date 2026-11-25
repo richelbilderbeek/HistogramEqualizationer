@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <iostream>
+#include <boost/shared_ptr.hpp>
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
