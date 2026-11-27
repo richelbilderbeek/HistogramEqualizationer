@@ -2,7 +2,7 @@
 site_name = "HistogramEqualizationer"
 site_url = "https://richelbilderbeek.github.io/HistogramEqualizationer/"
 repo_url = "https://github.com/richelbilderbeek/HistogramEqualizationer"
-edit_uri = "blob/master/docs/"
+edit_uri = "blob/main/docs/"
 
 nav = [
   { "Start" = "README.md"}
